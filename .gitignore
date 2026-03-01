@@ -1,2 +1,4 @@
 .venv
 .idea
+/__pycache__/
+audio_loading/__pycache__/

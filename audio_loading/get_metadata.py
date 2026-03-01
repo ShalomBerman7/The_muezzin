@@ -2,8 +2,6 @@ from pathlib import Path
 from tinytag import TinyTag
 from datetime import datetime
 
-PATH = r'C:\github\The_muezzin\podcasts'
-
 
 class GetMetadata:
     def __init__(self, path):
@@ -33,7 +31,3 @@ class GetMetadata:
                 print(f'error reading metadata {e}')
 
         return result
-
-
-c = GetMetadata(PATH)
-print(c.get_metadata())
