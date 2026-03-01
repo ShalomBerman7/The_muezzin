@@ -14,9 +14,10 @@ class Publisher:
         self.producer = Producer(conf)
 
     def publish(self):
-        try:
-            send_data = json.dumps(self.data).encode('utf-8')
-            self.producer.produce(self.topic, send_data)
-            self.producer.flush()
-        except Exception as e:
-            print(f'error publish to kafka: {e}')
+        for item in self.data:
+            try:
+                send_data = json.dumps(item).encode('utf-8')
+                self.producer.produce(self.topic, send_data)
+            except Exception as e:
+                print(f'error publish to kafka: {e}')
+        self.producer.flush()

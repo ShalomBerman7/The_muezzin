@@ -24,6 +24,7 @@ class GetMetadata:
                 data['file_name'] = file.name
                 data['file_size_bytes'] = tag.filesize
                 data['created_at'] = creation_time
+                data['file_path'] = str(file.absolute())
 
                 result.append(data)
 
