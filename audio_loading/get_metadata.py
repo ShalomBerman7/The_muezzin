@@ -5,7 +5,7 @@ from datetime import datetime
 PATH = r'C:\github\The_muezzin\podcasts'
 
 
-class GetMetadata():
+class GetMetadata:
     def __init__(self, path):
         self.path = Path(path)
 
