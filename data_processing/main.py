@@ -1,5 +1,6 @@
 import os
 from data_processing.consumer import DataConsumer
+from data_processing.utils import create_id
 
 from shared.loggin import Logger
 
@@ -14,10 +15,7 @@ def handle_message(metadata):
     try:
         file_name = metadata.get('file_name')
         logger.debug(f'handle the {file_name}')
-        print(metadata)
-        metadata['unique_id'] = str(f'{metadata['file_size_bytes']}_{metadata['created_at']}')
-        print(metadata['unique_id'])
-
+        metadata = create_id(metadata)
 
     except Exception as e:
         logger.error(f'failed handler {e}')
