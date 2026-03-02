@@ -1,7 +1,11 @@
 from confluent_kafka import Producer
 import json
 import os
+from shared.loggin import Logger
 
+ES_HOST = os.getenv('ELASTICSEARCH_URL', "http://localhost:9200")
+INDEX = 'logging'
+logger = Logger.get_logger('audio_loading', ES_HOST, INDEX)
 
 class Publisher:
     def __init__(self, topic, data):
@@ -19,5 +23,6 @@ class Publisher:
                 send_data = json.dumps(item).encode('utf-8')
                 self.producer.produce(self.topic, send_data)
             except Exception as e:
-                print(f'error publish to kafka: {e}')
+                logger.error(f'error publish to kafka: {e}')
+        logger.info(f'שליחה לקפקא הצליחה')
         self.producer.flush()
