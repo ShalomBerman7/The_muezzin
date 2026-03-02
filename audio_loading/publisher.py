@@ -24,5 +24,5 @@ class Publisher:
                 self.producer.produce(self.topic, send_data)
             except Exception as e:
                 logger.error(f'error publish to kafka: {e}')
-        logger.info(f'שליחה לקפקא הצליחה')
+        logger.info(f'Sending to Kafka was successful.')
         self.producer.flush()

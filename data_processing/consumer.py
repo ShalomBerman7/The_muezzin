@@ -18,7 +18,7 @@ class DataConsumer:
         self.consumer = Consumer(conf)
         self.consumer.subscribe([self.topic])
 
-    def listen(self):
+    def listen(self, callback):
         try:
             while True:
                 msg = self.consumer.poll(1.0)
@@ -29,8 +29,9 @@ class DataConsumer:
                     continue
 
                 data = json.loads(msg.value().decode('utf-8'))
+                callback(data)
 
-                logger.debug('משיכה הצליחה')
+                logger.debug('Pull succeeded')
 
         finally:
             self.consumer.close()
