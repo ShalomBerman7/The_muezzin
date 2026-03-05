@@ -19,7 +19,8 @@ def create_index_if_not_exists():
                 "file_name": {"type": "keyword"},
                 "file_size_bytes": {"type": "keyword"},
                 "created_at": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss||strict_date_optional_time"},
-                "file_path": {"type": "keyword"}
+                "file_path": {"type": "keyword"},
+                "text": {"type": "text"}
             }
         }
     }
