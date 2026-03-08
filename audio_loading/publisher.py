@@ -12,7 +12,7 @@ class Publisher:
         self.topic = topic
         self.data = data
 
-        server = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:29092')
+        server = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'kafka:9092')
         conf = {'bootstrap.servers': server,
                 'client.id': 'audio_loading'}
         self.producer = Producer(conf)

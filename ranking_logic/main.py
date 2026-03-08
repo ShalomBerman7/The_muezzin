@@ -20,7 +20,7 @@ def handle_message(metadata):
         file_name = metadata.get('file_name')
         logger.debug(f'handle the {file_name}')
         text = to_text(metadata['file_path'])
-        print(text)
+        logger.debug(text)
 
     except Exception as e:
         logger.error(f'failed handler {e}')

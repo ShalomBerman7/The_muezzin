@@ -12,7 +12,7 @@ class DataConsumer:
     def __init__(self, topic, group_id):
         self.topic = topic
         self.group_id = group_id
-        server = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:29092')
+        server = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'kafka:9092')
         conf = {'bootstrap.servers': server,
                 'group.id': self.group_id,
                 'auto.offset.reset': 'earliest',
