@@ -5,6 +5,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from ranking_logic.audio_to_text import to_text
 from shared.consumer import DataConsumer
 from shared.loggin import Logger
+from ranking_logic.logic import scored_text
 
 ES_HOST = os.getenv('ELASTICSEARCH_URL', "http://localhost:9200")
 INDEX = 'logging'
@@ -21,6 +22,9 @@ def handle_message(metadata):
         logger.debug(f'handle the {file_name}')
         text = to_text(metadata['file_path'])
         logger.debug(text)
+        score = scored_text(text)
+
+        logger.debug(score)
 
     except Exception as e:
         logger.error(f'failed handler {e}')
