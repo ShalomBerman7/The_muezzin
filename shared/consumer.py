@@ -5,7 +5,7 @@ from shared.loggin import Logger
 
 ES_HOST = os.getenv('ELASTICSEARCH_URL', "http://localhost:9200")
 INDEX = 'logging'
-logger = Logger.get_logger('processing_consumer', ES_HOST, INDEX)
+logger = Logger.get_logger('consumer', ES_HOST, INDEX)
 
 
 class DataConsumer:

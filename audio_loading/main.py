@@ -4,8 +4,10 @@ from publisher import Publisher
 PATH = r'C:\github\The_muezzin\podcasts'
 TOPIC = 'metadata'
 
-c = GetMetadata(PATH)
-data = c.get_metadata()
+if __name__ == '__main__':
 
-publisher = Publisher(TOPIC, data)
-publisher.publish()
+    c = GetMetadata(PATH)
+    data = c.get_metadata()
+
+    publisher = Publisher(TOPIC, data)
+    publisher.publish()

@@ -1,5 +1,5 @@
 import os
-from data_processing.consumer import DataConsumer
+from shared.consumer import DataConsumer
 from data_processing.utils import create_id
 from data_processing.elastic import create_index_if_not_exists, insert_to_elastic
 from data_processing.mongo_storage import MongoStorage

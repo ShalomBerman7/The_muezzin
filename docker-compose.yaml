@@ -50,3 +50,10 @@ services:
     ports:
       - '27017:27017'
 
+  audio_loading:
+    build:
+      context: .
+      dockerfile: audio_loading/Dockerfile
+    container_name: audio_loading
+    depends_on:
+      - kafka
