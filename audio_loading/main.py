@@ -1,7 +1,9 @@
 from get_metadata import GetMetadata
 from publisher import Publisher
+import os
 
-PATH = r'C:\github\The_muezzin\podcasts'
+# PATH = r'C:\github\The_muezzin\podcasts'
+PATH = os.getenv('PODCASTS_PATH', '/app/podcasts')
 TOPIC = 'metadata'
 
 if __name__ == '__main__':

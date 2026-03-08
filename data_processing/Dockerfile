@@ -7,4 +7,4 @@ RUN pip install -r requirements.txt
 COPY . .
 ENV PYTHONPATH=/app
 
-CMD ["python", "audio_loading/main.py"]
+CMD ["python", "data_processing/main.py"]

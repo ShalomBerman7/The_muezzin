@@ -1,3 +1,5 @@
 confluent-kafka
 tinytag
 elasticsearch
+SpeechRecognition
+pymongo

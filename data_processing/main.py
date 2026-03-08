@@ -10,7 +10,8 @@ INDEX = 'logging'
 logger = Logger.get_logger('processing_main', ES_HOST, INDEX)
 
 TOPIC = 'metadata'
-consumer = DataConsumer(TOPIC)
+GROUP_ID = 'process'
+consumer = DataConsumer(TOPIC, GROUP_ID)
 mongo_service = MongoStorage()
 
 def handle_message(metadata):

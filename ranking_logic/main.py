@@ -11,7 +11,8 @@ INDEX = 'logging'
 logger = Logger.get_logger('logic_main', ES_HOST, INDEX)
 
 TOPIC = 'metadata'
-consumer = DataConsumer(TOPIC)
+GROUP_ID = 'logic'
+consumer = DataConsumer(TOPIC, GROUP_ID)
 
 
 def handle_message(metadata):

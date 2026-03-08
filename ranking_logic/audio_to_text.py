@@ -11,8 +11,17 @@ def to_text(file):
             offset = 0
             while offset < duration:
                 audio = r.record(source, duration=60)
-                all_text.append(audio)
+                try:
+                    chunk_text = r.recognize_google(audio,language='he-IL')
+                    all_text.append(chunk_text)
+                except sr.UnknownValueError:
+                    pass
+                except sr.RequestError as e:
+                    print(e)
+                    break
+
                 offset += 60
+
         return ' '.join(all_text)
     except Exception as e:
         print(f'error: {e}')

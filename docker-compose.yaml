@@ -55,5 +55,29 @@ services:
       context: .
       dockerfile: audio_loading/Dockerfile
     container_name: audio_loading
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: "kafka:29092"
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+      PODCASTS_PATH: "/app/podcasts"
+    volumes:
+      - ./podcasts:/app/podcasts
     depends_on:
       - kafka
+      - elasticsearch
+
+  data_processing:
+    build:
+      context: .
+      dockerfile: data_processing/Dockerfile
+    container_name: data_processing
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: "kafka:29092"
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+      MONGO_URI: "mongodb://mongodb:27017/"
+      PODCASTS_PATH: "/app/podcasts"
+    volumes:
+      - ./podcasts:/app/podcasts
+    depends_on:
+      - kafka
+      - mongodb
+      - elasticsearch

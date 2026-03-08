@@ -9,12 +9,16 @@ logger = Logger.get_logger('consumer', ES_HOST, INDEX)
 
 
 class DataConsumer:
-    def __init__(self, topic):
+    def __init__(self, topic, group_id):
         self.topic = topic
+        self.group_id = group_id
         server = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:29092')
         conf = {'bootstrap.servers': server,
-                'group.id': 'data_processing',
-                'auto.offset.reset': 'earliest'}
+                'group.id': self.group_id,
+                'auto.offset.reset': 'earliest',
+                'session.timeout.ms': 45000,
+                'max.poll.interval.ms': 600000
+                }
         self.consumer = Consumer(conf)
         self.consumer.subscribe([self.topic])
 
