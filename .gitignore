@@ -5,3 +5,4 @@ audio_loading/__pycache__/
 shared/__pycache__/
 data_processing/__pycache__/
 ranking_logic/__pycache__/
+app/__pycache__/
