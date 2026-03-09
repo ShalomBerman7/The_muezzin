@@ -10,7 +10,6 @@ logger = Logger.get_logger('processing_elastic', ES_HOST, INDEX)
 es = Elasticsearch(ES_HOST)
 INDEX_NAME = 'muezzin'
 
-
 def create_index_if_not_exists():
     mapping = {
         "mappings": {
@@ -20,7 +19,11 @@ def create_index_if_not_exists():
                 "file_size_bytes": {"type": "keyword"},
                 "created_at": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss||strict_date_optional_time"},
                 "file_path": {"type": "keyword"},
-                "text": {"type": "text"}
+                "text": {"type": "text"},
+                "score": {"type": "integer"},
+                "bds_percent": {"type": "float"},
+                "is_bds": {"type": "boolean"},
+                "bds_threat_level": {"type": "keyword"}
             }
         }
     }
